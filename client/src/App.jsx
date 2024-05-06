@@ -1,16 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import TextEditor from "./TextEditor";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      CoWrite
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={<Navigate to={`/documents/${uuidv4()}`} />}
+        />
+        <Route path="/documents/:id" element={<TextEditor />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
