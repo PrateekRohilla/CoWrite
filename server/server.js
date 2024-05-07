@@ -1,8 +1,14 @@
 const { MongoClient } = require('mongodb'); 
 const mongoose = require('mongoose')
 const Document = require("./Document")
+const dotenv = require('dotenv')
 
-mongoose.connect('mongodb://localhost:27017/cowrite')
+dotenv.config()
+
+const user = process.env.user;
+const password = process.env.password;
+
+mongoose.connect(`mongodb+srv://${user}:${password}@cowrite.bijunjq.mongodb.net/?retryWrites=true&w=majority&appName=CoWrite`)
 
 const io = require('socket.io')(3001, {
   cors: {
