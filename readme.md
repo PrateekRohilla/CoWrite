@@ -59,7 +59,7 @@ After running both the frontend and backend servers, you can start writing and f
 - **Real-time:** Utilized Socket IO to enable real-time editing.
 
 ## Screenshots
-![CoWrite](cowrite.png)
+![CoWrite](https://github.com/PrateekRohilla/CoWrite/assets/23234142/f863dd09-a1f9-4ec2-9e5f-ba8dec41e1f2)
 
 ## Live Demo
 Check out the live version of CoWrite [here](https://cowrite.netlify.app).
