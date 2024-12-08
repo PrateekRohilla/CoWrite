@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CoWriteLanding from './assets/CoWriteLanding.jpg'
 import toast, { Toaster } from 'react-hot-toast';
+import CoWriteLanding from './assets/CoWriteLanding.jpg'
 
 const notify = () => toast(
     "Thanks for your interest.\nUser Account feature coming soon!",
@@ -12,18 +12,24 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleContinueAsGuest = () => {
+    
+    toast((t) => (
+        <span>
+          <b>Guest Docs are not saved</b> 
+          <br/>
+          You can still save & share your link
+          <br/>
+          <button onClick={() => toast.dismiss(t.id)}>
+            Dismiss
+          </button>
+        </span>
+    ),{duration: 50000,icon: '❗'});
+
     navigate(`/documents/${crypto.randomUUID()}`);
   };
 
   return (
     <div className="landing-page">
-        <header className="header">
-            <h1 className="logo">CoWrite</h1>
-            <div className="auth-buttons">
-                <button className="btn btn-login">Login</button>
-                <button className="btn btn-create" onClick={notify} >Create an account</button>
-            </div>
-        </header>
         <section className="hero">
             <div className="hero-content">
                 <h2 className="hero-title">Unleash your creativity with ease</h2>
@@ -47,12 +53,12 @@ const LandingPage = () => {
                 
                 <div className="cta-buttons">
                 <div className="cta-option">
-                    <button className="btn btn-secondary" onClick={notify}>Create an Account</button>
+                    <button className="btn btn-secondary" onClick={notify} >Create an Account</button>
                     <p>Save your progress & Unlock advanced features (coming soon)</p>
                 </div>
                 
                 <div className="cta-option">
-                    <button className="btn btn-primary" onClick={handleContinueAsGuest}>Continue as guest</button>
+                    <button className="btn btn-primary" onClick={handleContinueAsGuest} >Continue as guest</button>
                     <p>Jump right in & start writing instantly</p>
                 </div>
                 </div>

@@ -4,6 +4,11 @@ import { useCallback, useEffect, useState } from "react"
 import { io } from 'socket.io-client'
 import { useParams } from "react-router-dom"
 
+const notify = () => toast(
+  "Thanks for your interest.\nUser Account feature coming soon!",
+  { duration: 5000,icon: '👋',}
+);
+
 const SAVE_INTERVAL_MS = 2000;
 
 const TOOLBAR_OPTIONS = [
@@ -105,7 +110,9 @@ const TextEditor = () => {
   }, []);
   
   return (
-    <div className="container" ref={wrapperRef}></div>
+    <div className="editor">
+      <div className="container" ref={wrapperRef}></div>
+    </div>
   )
 }
 

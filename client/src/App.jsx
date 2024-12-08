@@ -1,4 +1,5 @@
 import TextEditor from "./TextEditor";
+import Layout from "./Layout";
 import LandingPage from "./LandingPage";
 import {
   BrowserRouter as Router,
@@ -17,8 +18,11 @@ function App() {
           exact
           element={<Navigate to={`/documents/${uuidv4()}`} />}
         /> */}
-        <Route path="/" exact element={<LandingPage />} />
-        <Route path="/documents/:id" element={<TextEditor />} />
+        <Route path="/" exact element={<Layout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="/documents/:id" element={<TextEditor />} />
+        </Route>
+        {/* <Route path="/" exact element={<LandingPage />} /> */}
       </Routes>
     </Router>
   );
